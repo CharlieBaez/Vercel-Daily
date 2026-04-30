@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Article, BreakingNews } from "./types";
 
-const API_URL = process.env.VERCEL_DAILY_API_URL;
+const API_URL = process.env.API_URL;
 
 
 async function fetchJson<T>(path: string): Promise<T> {
   if (!API_URL) {
-    throw new Error("Missing VERCEL_DAILY_API_URL environment variable.");
+    throw new Error("Missing API_URL environment variable.");
   }
-  const bypassToken = process.env.VERCEL_DAILY_BYPASS_TOKEN;
+  const bypassToken = process.env.BYPASS_TOKEN;
 
   if (!bypassToken) {
-    throw new Error("Missing VERCEL_DAILY_BYPASS_TOKEN environment variable.");
+    throw new Error("Missing BYPASS_TOKEN environment variable.");
   }
 
   const url = `${API_URL}${path}`;
